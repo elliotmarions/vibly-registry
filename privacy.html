@@ -60,14 +60,16 @@
 <main>
 
 <h1>Vibly — Privacy Policy</h1>
-<p class="meta">Chrome extension &ldquo;Vibly&rdquo; · Effective 1 September 2026 · Last updated 4 September 2026</p>
+<p class="meta">Chrome extension &ldquo;Vibly&rdquo; · Effective 1 September 2026 · Last updated 10 September 2026</p>
 
 <div class="box">
   <p><strong>The short version.</strong> Vibly turns your music down while an AI assistant
   writes an answer, and turns it back up afterwards. Everything it needs to do that stays
   on your computer. Vibly has no account, no server, no analytics, and no advertising. It
-  does not collect, transmit, sell or share your personal data, and it never reads what
-  you or an AI assistant write.</p>
+  does not collect, transmit, sell or share your personal data. It never keeps what you or
+  an AI assistant write: where it looks at text on the page, it is to answer a yes-or-no
+  question — is the message box empty, has the answer begun — and the text is let go in
+  the same step.</p>
 </div>
 
 <h2>Who is responsible</h2>
@@ -83,21 +85,41 @@ finished. Everything described below exists to serve that purpose and nothing el
 <h2>What Vibly looks at</h2>
 
 <h3>On the AI sites you allow</h3>
-<p>Vibly needs to know when an answer is on its way and when it has finished. It reads
-three kinds of signal, all of them about <em>timing</em>:</p>
+<p>Vibly needs to know three things: that you sent a message, that the answer has begun,
+and that it has finished. To tell, it watches the following, and nothing else:</p>
 <ul>
   <li><strong>That a network request to the service started and finished.</strong> Vibly
   observes the address, the timing and the outcome of the request the site makes when you
   send a message, and nothing else. It reads neither headers nor bodies, of requests or of
   responses: Chrome&rsquo;s extension API hands those only to an extension that asks for
   them, and Vibly does not ask.</li>
+  <li><strong>That you pressed Enter in the message box.</strong> Vibly listens for the
+  Enter key only; every other key is ignored the moment it is pressed, and no keystroke is
+  recorded. If a site has changed its layout so that the message box cannot be found,
+  Enter in any text field on that AI site counts instead. When Enter is pressed, Vibly
+  checks whether the box is empty — an empty box sends nothing, so that Enter is not a
+  message. To make the check it looks at what is in the box, and keeps only the answer:
+  empty or not.</li>
+  <li><strong>The label of a button you click</strong> — its accessible name, its tooltip,
+  or the word written on it — to tell a send or stop button from any other. Nothing about
+  the click is kept.</li>
   <li><strong>That a stop button appeared or disappeared</strong> on the page.</li>
-  <li><strong>How much text has appeared</strong> in the element that holds the answer —
-  the number of characters, never the characters themselves.</li>
+  <li><strong>How much text has appeared</strong> in the part of the page that holds the
+  answer, and on some services in the part that shows the assistant is working. Vibly
+  counts the characters; it does not keep them, and the count starts over with every
+  message.</li>
+  <li><strong>Which part of the site you are on.</strong> claude.ai hosts Claude, Claude
+  Code and Cowork at one address, and only the page&rsquo;s path tells them apart.</li>
 </ul>
-<p>Vibly does not read the text of your prompts, the text of the answers, page titles,
-conversation names, conversation history, account details, cookies, or anything you type.
-None of these are stored, and none are sent anywhere.</p>
+<p>None of this leaves the tab except as a short signal about timing — a message was sent,
+the answer began, the answer finished. None of the text Vibly looks at is stored or sent
+anywhere: not your prompts, not the answers, not the labels of buttons. Vibly does not read
+your conversation history, account details or cookies at all.</p>
+<p><strong>Tab titles.</strong> Vibly&rsquo;s popup names your open AI tabs by their titles,
+so that you can choose which one Vibly follows. On most AI services a tab&rsquo;s title is
+the name of the conversation. The titles are read from Chrome when the popup asks for them
+and shown there; they are not stored, and they are kept out of the diagnostic report on
+purpose.</p>
 
 <h3>On the music sites you allow</h3>
 <p>Vibly looks for audio and video elements on the page so that it can change their volume,
@@ -224,8 +246,8 @@ reason it is kept short.</p>
   <li>It does not use your data for any purpose unrelated to turning your music down and
   back up again.</li>
   <li>It does not track you across sites or build a profile of your activity.</li>
-  <li>It does not read, store or transmit the content of your conversations with an AI
-  assistant.</li>
+  <li>It does not store or transmit the content of your conversations with an AI
+  assistant, and it looks at that content only as described above.</li>
 </ul>
 <p>Vibly&rsquo;s use of information received from Google APIs, and of all data it handles,
 adheres to the
